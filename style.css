@@ -1,0 +1,24 @@
+*{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+body{
+    background-color: lightblue;
+}
+h3{
+    display: inline-block;
+    font-family: sans-serif;
+}
+#weather{
+    width: 300px;
+}
+h4{
+    display: inline-block;
+    color: darkblue;
+    font-family: sans-serif;
+}
+h1{
+    background-image: url("background.jpg");
+    height: 100px;
+}

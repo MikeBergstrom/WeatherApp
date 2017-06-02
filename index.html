@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>$(document).ready(function() {
+        // alert("ready");
+            $('form').submit(function() {
+                // your code here (build up your url)
+                var cityid = $('#city1').val(); 
+                var url = "http://api.openweathermap.org/data/2.5/weather?q=" + cityid + "&APPID=ba94b18d66eef02f7aaf4105c37e7118&units=imperial";
+
+                $.get(url, function(res) {
+                //     // your code here
+                $('#title').text(res.name);
+                $('#temp').text(res.main.temp);
+                $('#temp').append("<h4>&deg;</h4>");
+                $('#desc').text(res.weather[0].description);
+                $('#max').text(res.main.temp_max);
+                $('#max').append("<h4>&deg;</h4>");
+                $('#low').text(res.main.temp_min);
+                $('#low').append("<h4>&deg;</h4>");
+                 console.log(res.weather.description);
+                }, 'json');
+                // don't forget to return false so the page doesn't refresh
+                console.log(cityid);
+                console.log(url);
+                return false;
+                 });
+            });
+</script>
+</head>
+<body>
+    <h1>Weather Forecast</h1>
+    <h2>Enter City
+    <form>
+        <input id="city1" type="text" name="city">
+        <input type="submit">
+    </form>
+    <div id="weather">
+        <h2 id="title"></h2>
+        <h3>Current Weather</h3>
+        <h4 id="temp"></h4>
+        <h5 id="desc"></h5>
+        <h3>Max Temperature</h3>
+        <h4 id="max"></h4>
+        <h3>Low Temperature</h4>
+        <h4 id="low"></h4>
+    </div>
+</body>
